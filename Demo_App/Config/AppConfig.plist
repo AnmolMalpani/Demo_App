@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>serviceHostURL</key>
+	<string>http://eduschoolapp.com/eduschool_app/</string>
+	<key>fontSizeH1</key>
+	<string>18</string>
+	<key>APIKey</key>
+	<string>DgMDJrqibwZGr56mPGQV4KLmnAGh6UFc</string>
+</dict>
+</plist>

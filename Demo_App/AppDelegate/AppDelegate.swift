@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import XCGLogger
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +17,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        AppReachability.sharedInstance.startMoniteringReachability()
+        configureLogger()
+        
         return true
     }
 
@@ -40,7 +45,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
-
+    
+    func configureLogger() -> Void {
+        
+        let log = XCGLogger.default
+        log.setup(level: .debug, showThreadName: true, showLevel: true, showFileNames: true, showLineNumbers: true, writeToFile: "path/to/file", fileLevel: .debug)
+        log.verbose("A verbose message, usually useful when working on a specific problem")
+        log.debug("A debug message")
+        log.info("An info message, probably useful to power users looking in console.app")
+        log.warning("A warning message, may indicate a possible error")
+        log.error("An error occurred, but it's recoverable, just info about what happened")
+        log.severe("A severe error occurred, we are likely about to crash now")
+    }
 }
 
