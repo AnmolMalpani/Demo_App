@@ -117,6 +117,9 @@
                         <viewLayoutGuide key="safeArea" id="EuH-XM-I19"/>
                     </view>
                     <navigationItem key="navigationItem" id="Pme-Vh-bCf"/>
+                    <connections>
+                        <outlet property="loginTable" destination="SIs-C5-ltH" id="PxJ-fX-bR0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QDJ-37-8rs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -12,7 +12,7 @@ import ObjectMapper
 class HLoginModel : Mappable
 {
     var id , school_id , status , class_id , section_id : Any?
-    var class_teacher , class_name , name , section_name : String?
+    var class_teacher, user_type , class_name , name , section_name : String?
     
     required init?(map: Map) {
         
@@ -27,6 +27,7 @@ class HLoginModel : Mappable
         id <- map["id"]
         school_id <- map["school_id"]
         status <- map["status"]
+        user_type <- map["user_type"]
         class_id <- map["class_id"]
         section_id <- map["section_id"]
         class_teacher <- map["class_teacher"]

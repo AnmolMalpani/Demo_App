@@ -12,15 +12,20 @@ class LoginDetailViewC: BaseViewController {
     
     @IBOutlet weak var loginTable: UITableView?
     
-    internal var dataStore = [LoginStrct]()
-    internal var loginDetailModel: LoginDetailModeling?
+    var dataStore = [[String : String]]()
+    var dictLogin : HLoginModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
         
-        recheckVM()
+        print(dictLogin ?? "")
+        dataStore = [["Title":"User Type", "Value" : dictLogin?.user_type] ,
+                     ["Title":"Teacher Name", "Value" : dictLogin?.name] ,
+                     ["Title":"Class Name", "Value" : dictLogin?.class_name] ,
+                     ["Title":"Section Name", "Value" : dictLogin?.section_name]
+                     ] as! [[String : String]]
         setUpView()
     }
     
@@ -29,33 +34,15 @@ class LoginDetailViewC: BaseViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    // MARK: - Recheck VM
-    
-    private func recheckVM() {
-        
-        if self.loginDetailModel == nil {
-            
-            self.loginDetailModel = LoginDetailVM()
-        }
-    }
+    // MARK: - Set View
     
     private func setUpView() {
         
         registerNibFiles()
-        if let arrDataStore = self.loginDetailModel?.prepareDataSource() {
-            
-            self.dataStore = arrDataStore
-        }
     }
     
     private func registerNibFiles() {
         
         self.loginTable?.register(nib: LoginTableViewCell.className)
     }
-    
-    @IBAction func moveToLoginDetails (_ sender : UIButton) {
-        
-        self.navigationController?.popViewController(animated: true)
-    }
 }
-

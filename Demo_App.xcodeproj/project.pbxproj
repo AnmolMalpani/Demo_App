@@ -25,7 +25,6 @@
 		6C18A09F20B005DD0077D262 /* LoginTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C18A09D20B005DD0077D262 /* LoginTableViewCell.swift */; };
 		6C18A0A020B005DD0077D262 /* LoginTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C18A09E20B005DD0077D262 /* LoginTableViewCell.xib */; };
 		6C18A0A220B016040077D262 /* LoginDetailViewC+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C18A0A120B016040077D262 /* LoginDetailViewC+TableView.swift */; };
-		6C18A0A420B0160E0077D262 /* LoginDetailVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C18A0A320B0160E0077D262 /* LoginDetailVM.swift */; };
 		6C55CABD20B01A21006F623E /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C55CABC20B01A21006F623E /* LoginModel.swift */; };
 		6C55CABF20B01F77006F623E /* LoginDetailService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C55CABE20B01F77006F623E /* LoginDetailService.swift */; };
 		6C55CAC120B01F8F006F623E /* BaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C55CAC020B01F8F006F623E /* BaseService.swift */; };
@@ -58,7 +57,6 @@
 		6C18A09D20B005DD0077D262 /* LoginTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTableViewCell.swift; sourceTree = "<group>"; };
 		6C18A09E20B005DD0077D262 /* LoginTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginTableViewCell.xib; sourceTree = "<group>"; };
 		6C18A0A120B016040077D262 /* LoginDetailViewC+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginDetailViewC+TableView.swift"; sourceTree = "<group>"; };
-		6C18A0A320B0160E0077D262 /* LoginDetailVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDetailVM.swift; sourceTree = "<group>"; };
 		6C55CABC20B01A21006F623E /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		6C55CABE20B01F77006F623E /* LoginDetailService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDetailService.swift; sourceTree = "<group>"; };
 		6C55CAC020B01F8F006F623E /* BaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseService.swift; sourceTree = "<group>"; };
@@ -220,7 +218,6 @@
 			children = (
 				6C18A09020B001C10077D262 /* LoginDetailViewC.swift */,
 				6C18A0A120B016040077D262 /* LoginDetailViewC+TableView.swift */,
-				6C18A0A320B0160E0077D262 /* LoginDetailVM.swift */,
 			);
 			path = LoginDetails;
 			sourceTree = "<group>";
@@ -426,7 +423,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				6C18A09F20B005DD0077D262 /* LoginTableViewCell.swift in Sources */,
-				6C18A0A420B0160E0077D262 /* LoginDetailVM.swift in Sources */,
 				6C55CABF20B01F77006F623E /* LoginDetailService.swift in Sources */,
 				6C18A09720B0052A0077D262 /* LoginViewC.swift in Sources */,
 				6C18A08420AFF6560077D262 /* ConstantsTexts.swift in Sources */,

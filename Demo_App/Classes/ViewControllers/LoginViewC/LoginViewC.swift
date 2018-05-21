@@ -83,12 +83,12 @@ extension LoginViewC {
         LoginDetailService().loginDetailService(dict).then { (userResponse) -> Void in
             
             print(userResponse)
-            if userResponse.id == nil {
+            if userResponse.class_id == nil {
                 
                 HHelper.showAlert("Please use correct credentials")
             }
             else{
-                self.moveToLoginDetail()
+                self.moveToLoginDetail(loginModelll: userResponse)
             }
             
             }.catch { (error) in
@@ -100,9 +100,10 @@ extension LoginViewC {
         }
     }
     
-    private func moveToLoginDetail() {
+    private func moveToLoginDetail(loginModelll : HLoginModel) {
         
-        let loginDetailVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: LoginDetailViewC.className)
+        let loginDetailVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: LoginDetailViewC.className) as! LoginDetailViewC
+        loginDetailVC.dictLogin = loginModelll
         self.navigationController?.pushViewController(loginDetailVC, animated: true)
     }
 }

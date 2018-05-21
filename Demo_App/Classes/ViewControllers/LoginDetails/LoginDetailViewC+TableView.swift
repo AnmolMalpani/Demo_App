@@ -12,6 +12,7 @@ import UIKit
 extension LoginDetailViewC : UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         return dataStore.count
     }
     
@@ -26,58 +27,51 @@ extension LoginDetailViewC : UITableViewDataSource {
             fatalError("Unexpected index path")
         }
         cell.userNameTF?.isHidden = true
-        cell.userDtlValueLbl?.isHidden = true
-        cell.configureCellWith(info: dataStore[indexPath.row])
+        cell.userPassTF?.isHidden = true
+
+        let dict = dataStore[indexPath.row]
+        cell.userDtlTitleLbl?.text = dict ["Title"]
+        cell.userDtlValueLbl?.text = dict ["Value"]
+        cell.userDtlValueLbl?.textColor = UIColor.white
         return cell
     }
 }
 
-// MARK: - Text Field Delegate
-
-extension LoginDetailViewC: UITextFieldDelegate{
+extension LoginDetailViewC: UITableViewDelegate {
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        guard let currentIndexPath = HHelper.getIndexPathFor(view: textField, tableView: self.loginTable!) else {
-            return true
-        }
-        let lastRowIndex = (self.loginTable?.numberOfRows(inSection: 0))! - 1
-        
-        if currentIndexPath.row != lastRowIndex {
-            
-            var nextIndexPath = IndexPath(row: currentIndexPath.row + 1, section: 0)
-            
-            while nextIndexPath.row <= lastRowIndex {
-                if let nextCell = self.loginTable?.cellForRow(at: nextIndexPath) as? LoginTableViewCell {
-                    self.loginTable?.scrollToRow(at: nextIndexPath, at: .middle, animated: true)
-                    nextCell.userNameTF?.returnKeyType = .next
-                    if nextIndexPath.row == lastRowIndex {
-                        nextCell.userNameTF?.returnKeyType = .done
-                    }
-                    nextCell.userPassTF?.becomeFirstResponder()
-                    break
-                }
-            }
-            textField.resignFirstResponder()
-        }
-        else {
-            textField.resignFirstResponder()
-        }
-        return true
+        return 100
     }
     
-    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextFieldDidEndEditingReason) {
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         
-        let str = textField.text as String?
-        if let index = HHelper.getIndexPathFor(view: textField, tableView: self.loginTable!) {
-            
-            if str?.count == 0 {
-                
-                self.dataStore[index.row].value = ""
-            }
-            else{
-                self.dataStore[index.row].value = str
-            }
-        }
+        let logoutButtonView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 80))
+        logoutButtonView.backgroundColor = UIColor.clear
+        
+        let logoutButton = UIButton(frame: CGRect(x: 0, y: 10, width: logoutButtonView.frame.size.width, height: 60))
+        logoutButton.setTitle("LOGOUT", for: .normal)
+        logoutButton.layer.cornerRadius = 3.0
+        logoutButton.clipsToBounds = true
+        logoutButton.titleLabel?.font = UIFont(name: "SFProDisplay-Medium", size: 15.0)
+        logoutButton.addTarget(self, action:#selector(moveToLoginDetail(_:)), for:.touchUpInside)
+        logoutButton.backgroundColor = UIColor.clear
+        logoutButtonView.addSubview(logoutButton)
+        
+        return logoutButtonView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        
+        return 70;
+    }
+}
+
+extension LoginDetailViewC {
+    
+    @objc private func moveToLoginDetail(_ sender : UIButton) {
+        
+        let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: LoginViewC.className) as! LoginViewC
+        self.navigationController?.pushViewController(loginVC, animated: true)
     }
 }

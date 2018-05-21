@@ -31,7 +31,7 @@ class LoginDetailService : HBaseService {
             let completeUrl = self.getServiceHostURL() + loginDetailEndPoint
             self._log.debug("API:\(completeUrl) Param \(dict)")
             
-            Alamofire.request(completeUrl, method: .post, parameters: ["pass":"12345","user":"mamta"],encoding: JSONEncoding.default, headers: nil).responseJSON (queue: nil, options: JSONSerialization.ReadingOptions.allowFragments,completionHandler: { response in
+            Alamofire.request(completeUrl, method: .post, parameters: dict, headers: self.reqHeader()).responseJSON (queue: nil, options: JSONSerialization.ReadingOptions.allowFragments,completionHandler: { response in
                 
                 switch response.result {
                     
